@@ -21,11 +21,10 @@ class App(tk.Tk):
         #widgets
         self.canvas =Canvas(self, 750, 500)
         self.left_frame = LeftFrame(self,200, 600, 'white',self.canvas)
-        self.left_frame.pack(side="left", fill="y")
         self.top_frame = TopFrame(self, 750, 100, 'white',self.canvas)
-     
-        self.canvas.pack()
 
+        self.left_frame.pack(side="left", fill="y")
+        self.canvas.pack()
         self.left_frame.create_widgets()
 
         #run
