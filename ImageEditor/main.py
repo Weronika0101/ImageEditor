@@ -231,13 +231,16 @@ class TopFrame(tk.Frame):
             messagebox.showerror("Błąd","You have to add image first")
 
     def rotate_right(self):
-        self.canvas.delete("all")
-        img = ImageTk.getimage(self.canvas.image)
-        rotated_img = img.rotate(-90,expand=True)
-        self.canvas.config(width=rotated_img.width, height=rotated_img.height)
-        photoimage = ImageTk.PhotoImage(rotated_img)
-        self.canvas.image = photoimage
-        self.canvas.create_image(0, 0, image=photoimage, anchor="nw")
+        try:
+            self.canvas.delete("all")
+            img = ImageTk.getimage(self.canvas.image)
+            rotated_img = img.rotate(-90,expand=True)
+            self.canvas.config(width=rotated_img.width, height=rotated_img.height)
+            photoimage = ImageTk.PhotoImage(rotated_img)
+            self.canvas.image = photoimage
+            self.canvas.create_image(0, 0, image=photoimage, anchor="nw")
+        except AttributeError:
+            messagebox.showerror("Błąd","You have to add image first")
 
     def clear_canvas(self):
         self.canvas.delete("all")
